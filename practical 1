@@ -1,0 +1,10 @@
+Step 1: Installing DHCP Server in Ubuntu
+$ sudo apt install isc-dhcp-server
+2. When the installation completes, edit the file 
+/etc/default/isc-dhcp-server
+ to define the interfaces DHCPD should use to serve DHCP requests, with the 
+INTERFACES option.
+3. The main DHCP configuration file is /etc/dhcp/dhcpd.conf,add all your network information to be sent to clients here.
+4. Now, open and modify the main configuration file, define your DHCP server options:
+$ sudo vi /etc/dhcp/dhcpd.conf
+5. Now, define a subnetwork; here, we’ll setup DHCP for 192.168.137.1/24 LAN network .
