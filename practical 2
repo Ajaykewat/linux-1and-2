@@ -1,76 +1,39 @@
+Aim   :Initial settings: Add a User, Network Settings, Change to static IP address, Disable IPv6 if not needed, Configure Services,
 
-Aim:
-Aim: Initial settings: Add a User, Network Settings, Change to static IP address,
- Disable IPv6 if not needed, Configure Services, display 
-the list of services which are running, Stop and turn OFF auto-start
- setting for a service if you don’t need it, Sudo Settings
+       display the list of services which are running, Stop and turn OFF auto-start setting for a service if you don’t 
 
-useradd creates a new user account according to the options specified on the command line and the default values set in the /etc/default/useradd file.
-useradd [OPTIONS] USERNAME
-$ sudo useradd username
+       need it, Sudo Settings.
+       
+       
+       
+            
 
-netstat –I to find the interface name. 
-sudo ifconfig eth0 192.168.72.6 netmask 255.255.255.0
+Step1 : Addng a user on terminal : 
 
-Then to add a default gateway:
-sudo route add default gw 192.168.72.1 eth0
+ we can add  user  one or more  in a group .
 
-#Display the list service
-When you run the systemctl command ,it will display a list of all loaded systemd units 
-(read the systemd documentation for more information about systemd units)
- including services, showing their status (whether active or not).
-To list all loaded services on your system (whether active; running, exited or failed, use the list-units subcommand and --type switch with a value of service.
+syntax to add user in linux : $sudo adduser <username>
 
-# systemctl list-units --type=service
-OR
-# systemctl --type=service
+in machine e.g :- $sudo adduser lsa_user
 
 
+Step2:Network settings: The ip address and the ethernet connections and other network connections can be viewed using the :
 
-CONFIGURE SERVICES
-Systemd
-
-sudo systemctl status – shows status of all services on server
-sudo systemctl status apache2 – shows status of specific service
-sudo systemctl start/restart/stop apache2 – start/stop restart service
-Service
-
-sudo service —status-all | less – shows status of services and allows you to scroll through results.
-sudo service apache2 status/start/stop/restart – to manage services
-Init.d (Depricated, but works)
-
-sudo /etc/init.d/apache2 status/start/restart/stop – to manage services
+comand: $sudo ip a   (or)  $sudo ip addr
 
 
-It is mainly used for provide commands execution right for any user or group.
-Only root user has execution right for all commands .
-But normal user have limited commands execution rights
+Step:3Configuring services: services are also known as daemons which efficiently run in the background, services usually have a 'd' in last 
 
-To edit sudo configuration file use:
+of their name to identify it as a daemon for example - smbd , nmbd,etc
 
-visudo
-The above command will open /etc/sudoers file in an editor. This file is the main configuration file for sudo settings.
+services can be lookout in the /etc/ folder as mostly the services lie there for example: $sudo nano /etc/dhcp/dhcpd.conf 
+
+Step 4:List of services running: command to list the currently active and running services:- $sudo systemc
 
 
-Static IP Address in Debian / Ubuntu
-To setup static IP address in Debian/ Ubuntu, open the following file:
+Step5:enable a service:                 $sudo systemctl enable <service_name>
 
-# nano /etc/network/interfaces
-You may see a line looking like this:
-To setup static IP address in Debian
-auto eth0
-iface eth0 inet dhcp
-Change it so it looks like this:
-
-auto eth0
-iface eth0 inet static 
-  address 192.168.0.100
-  netmask 255.255.255.0
-  gateway 192.168.0.1
-  dns-nameservers 4.4.4.4
-  dns-nameservers 8.8.8.8
-Save the file and then edit /etc/resolv.conf like this:
-
-# nano /etc/resolv.conf
-nameserver 8.8.8.8 # Replace with your nameserver ip
-nameserver 4.4.4.4 # Replace with your nameserver ip
+Command start a service:                  $sudo systemctl start <service_name>
+Command check the status of a service:    $sudo systemctl status <service_name>
+Command stop a service:                   $sudo systemctl stop <service_name>
+ Command auto-start a service:             $sudo systemctl restart <service_name>
