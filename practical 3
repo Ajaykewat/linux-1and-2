@@ -28,4 +28,5 @@ $sudo exportfs -ra
 
 $sudo apt-get -y install nfs-common
 
-$sudo mount -t nfs /directorytoexport client_ip_ntwrk (permissions) 
+$sudo mount -t nfs /directorytoexport client_ip_ntwrk (permissions ) 
+last give your password
