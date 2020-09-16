@@ -1,7 +1,7 @@
  AIM: 
  Network File System (NFS) is basically developed for sharing of files and folders between Linux/Unix systems.
    
-   It allows you to mount your local file systems over a network and remote hosts to interact with them as they are mounted locally on the same system. 
+  It allows you to mount your local file systems over a network and remote hosts to interact with them as they are mounted locally on the same system. 
  With the help of NFS, we can set up file sharing between Unix to Linux system and Linux to Unix system.
 
 
