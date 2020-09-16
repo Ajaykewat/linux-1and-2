@@ -1,5 +1,5 @@
 ##SSH ##
-
+THEORY:
       The SSH provides a secure encrypted connection between two hosts over an insecure network.
       this connection can alse be used for terminal access,file transfers,and for tunneling other applications.
  
