@@ -1,0 +1,31 @@
+ AIM: Network File System (NFS) is basically developed for sharing of files and folders between Linux/Unix systems.
+ It allows you to mount your local file systems over a network and remote hosts to interact with them as they are mounted locally on the same system. 
+ With the help of NFS, we can set up file sharing between Unix to Linux system and Linux to Unix system.
+
+
+Commands:-
+
+To install NFS kernel 
+
+#sudo apt-get -y install nfs-kernel-server
+
+To enable or active nfs kernel server
+
+#sudo systemctl enable nfs-kernel-server
+
+[Create a directory to show the function of nfs i.e(mounting)]
+
+#mkdir tycs_a
+#touch r.txt
+
+#cat /etc/exports
+
+configure your exports file by adding /directory_path/ ipaddr (permissions)
+
+#sudo exportfs -ra
+
+#sudo apt-get -y install nfs-common
+
+#sudo mount -t nfs /directorytoexport client_ip_ntwrk (permissions) 
+
+Check for the mounted file in the directory you made
