@@ -1,28 +1,28 @@
-AIM: When establishing a remote connection between a client and a server, a primary concern is ensuring security. For Linux users,
-      the best practice of accessing and managing your server remotely is through the cryptographic protocol known as Secure Shell (SSH).
-      The ssh command provides a secure encrypted connection between two hosts over an insecure network.
-      This connection can also be used for terminal access, file transfers, and for tunneling other applications.
+##SSH ##
+
+      The SSH provides a secure encrypted connection between two hosts over an insecure network.
+      this connection can alse be used for terminal access,file transfers,and for tunneling other applications.
  
  Commands:
 
-//To install SSH, first update the package repository cache with//
+1.To install SSH, first update the package repository cache 
 
-} #sudo apt-get update
+$sudo apt-get update
 
-//To install the OpenSSH software package //
+2.To install the OpenSSH software package 
 
- } #sudo apt-get -y install openssh-server
+ $sudo apt-get -y install openssh-server
 
- //To enable SSH//
+3.To enable SSH
 
- }#sudo systemctl enable ssh
+$sudo systemctl enable ssh
  
-// (optional)-if required change the configurations from the sshd config file //
+ 4.if required change the configurations from the sshd config file 
  
- }#sudo systemctl start ssh
+ $sudo systemctl start ssh
+ or
+ $sudo systemctl status ssh
  
- }(optional) #sudo systemctl status ssh
+$sudo ssh localhost
  
- }#sudo ssh localhost
- 
-// last enter your username and password//
+
