@@ -1,0 +1,37 @@
+Samba server
+A Samba file server enables file sharing across different operating systems over a network. It lets you access your desktop files from a laptop and share files with Windows and macOS users. 
+Step1: Installtion of  samba
+sudo apt update s
+sudo apt install samba
+Command to  check whether it is installed:
+
+whereis samba 
+
+Step2: configure  samba server
+mkdir /home/<username>/sambashare/
+The command above creates a new folder sambashare in our home directory which we will share later.
+The configuration file for Samba is located at 
+/etc/samba/smb.conf 
+To add the new directory as a share, we edit the file by running:
+sudo nano /etc/samba/smb.conf
+At the bottom of the file, add the following lines:
+[sambashare] 
+comment = Samba on Ubuntu 
+path = /home/username/sambashare
+read only = no 
+browsable = yes
+Step 3: Access Samba shared files
+Now we need to access what we’ve shared. We can use the smbclient utility to access Windows shared files. We can list the shared files like this:
+$ smbclient -L localhost -U%  
+Step 4: Creating Samba users
+To create a samba entry for an existing system user, use the pdbedit command:
+$ pdbedit -a kali
+The new user will be created in the Samba default user database which is /var/lib/samba/private/passdb.tdb file.
+With a Samba user created, we can make the shares available only to authenticated users,
+This user can access his resources on Samba server using smbclient like this:
+$ smbclient -U kali -L //192.168.1.3
+Restart now
+$sudo systemctl restart smbd
+$sudo ufw allow from 192.168.1.3/24 to any samba
+Adding rule
+Sudo ufw reload
